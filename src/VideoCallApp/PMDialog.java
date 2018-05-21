@@ -12,22 +12,19 @@ import java.util.logging.Logger;
 import javax.swing.*;
 
 public class PMDialog extends javax.swing.JDialog {
-    private final String pengirim;
-    private final String kepada;
+    private final Socket pengirim;
+    private final ObjectInputStream kepada;
 
-    private final Socket socket;
-    private final ObjectInputStream input;
-    private final ObjectOutputStream output;
+    private final ObjectOutputStream socket;
+    private final String input;
+    private final String output;
     private JTextArea viewTextArea;
     private JTextField postTextField;
     private JButton postButton;
     private JScrollPane jScrollPanel;
 
 
-//    Swing Components here ...
-
-
-    public PMDialog(ChatClient parent , String pengirim, String kepada, Socket socket, ObjectInputStream input, ObjectOutputStream output) {
+    public PMDialog(ChatClient parent , Socket pengirim, ObjectInputStream kepada, ObjectOutputStream socket, String input, String output) {
         super(parent,false);
 
 
@@ -65,7 +62,6 @@ public class PMDialog extends javax.swing.JDialog {
         postTextField.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                error  belum ad methodnyo
                 postTextFieldActionPerformed(e);
             }
         });
@@ -74,7 +70,6 @@ public class PMDialog extends javax.swing.JDialog {
         postButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                error belum ada methodnyo
                 postButtonActionPerformed(e);
             }
         });
@@ -115,7 +110,7 @@ public class PMDialog extends javax.swing.JDialog {
         try {
             String message = "postPrivateText~"+pengirim+"~"+postTextField.getText()+"~"+kepada+"~\n";
             display(pengirim+": "+postTextField.getText()+"\n");
-            output.writeObject(message);
+            socket.writeObject(message);
             postTextField.setText("");
         }catch (IOException ioex){
             Logger.getLogger(ChatClient.class.getName()).log(Level.SEVERE, null, ioex);
