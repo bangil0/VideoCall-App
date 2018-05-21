@@ -121,10 +121,4 @@ public class PMDialog extends javax.swing.JDialog {
         postButtonActionPerformed(evt);
     }
 
-//    private javax.swing.JScrollPane jScrollPane;
-//    private javax.swing.JButton postButton;
-//    private javax.swing.JTextField postTextField;
-//    private javax.swing.JTextArea viewTextArea;
-
-
 }

@@ -16,7 +16,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ChatClient extends javax.swing.JFrame {
 
-    public static final String SKYPE_PATH = "/usr/bin/skypeforlinux";
+    /* SKYPE_PATH diubah menjadi directory skype masing-masing */
+    public static final String SKYPE_PATH = "/usr/share/applications/ms-skype.desktop";
 
     /**
      * Creates new form ChatClient
